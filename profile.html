@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - Innovative Ideas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-bg: #f8f9fa;
+      --dark-bg: #2c3e50;
+    }
+
+    body {
+      background: var(--light-bg);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .profile-section {
+      padding: 60px 0;
+    }
+
+    .profile-card {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .profile-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .profile-image-container {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 20px;
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--secondary-color);
+    }
+
+    .profile-image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .profile-image-container:hover .profile-image-overlay {
+      opacity: 1;
+    }
+
+    .upload-btn {
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 50%;
+      background: var(--secondary-color);
+      transition: transform 0.3s ease;
+    }
+
+    .upload-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .profile-name {
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .profile-role {
+      color: var(--secondary-color);
+      font-size: 1.1rem;
+    }
+
+    .stats-card {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .stats-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .stats-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 5px;
+    }
+
+    .stats-label {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .activity-card {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .activity-icon {
+      font-size: 1.5rem;
+      color: var(--secondary-color);
+      margin-right: 15px;
+    }
+
+    .edit-btn {
+      background: var(--secondary-color);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: none;
+      transition: all 0.3s ease;
+    }
+
+    .edit-btn:hover {
+      background: var(--primary-color);
+      transform: translateY(-2px);
+    }
+
+    .skill-badge {
+      background: var(--light-bg);
+      color: var(--primary-color);
+      padding: 5px 15px;
+      border-radius: 20px;
+      margin: 5px;
+      display: inline-block;
+    }
+
+    @media (max-width: 768px) {
+      .profile-section {
+        padding: 40px 0;
+      }
+
+      .stats-card {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Include Header -->
+  <div id="header-placeholder"></div>
+
+  <!-- Profile Section -->
+  <section class="profile-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="profile-card">
+            <div class="profile-header">
+              <div class="profile-image-container">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                     alt="Profile" 
+                     class="profile-image"
+                     id="profileImage">
+                <div class="profile-image-overlay">
+                  <label for="profilePhotoUpload" class="upload-btn">
+                    <i class="fas fa-camera"></i>
+                  </label>
+                  <input type="file" 
+                         id="profilePhotoUpload" 
+                         accept="image/*" 
+                         style="display: none;"
+                         onchange="handleProfilePhotoUpload(event)">
+                </div>
+              </div>
+              <h2 class="profile-name">John Doe</h2>
+              <p class="profile-role">Student</p>
+              <button class="btn edit-btn">
+                <i class="fas fa-edit me-2"></i>Edit Profile
+              </button>
+            </div>
+            <div class="profile-info">
+              <h4>About Me</h4>
+              <p id="aboutMe">Loading...</p>
+              
+              <h4 class="mt-4">Account Information</h4>
+              <div class="account-info">
+                <p><strong>Username:</strong> <span id="username"></span></p>
+                <p><strong>Email:</strong> <span id="userEmail"></span></p>
+                <p><strong>Member Since:</strong> <span id="memberSince"></span></p>
+              </div>
+              
+              <h4 class="mt-4">Skills & Interests</h4>
+              <div class="skills" id="skillsContainer">
+                <!-- Skills will be added here dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="row mb-4">
+            <div class="col-md-4">
+              <div class="stats-card">
+                <div class="stats-number">12</div>
+                <div class="stats-label">Projects</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats-card">
+                <div class="stats-number">45</div>
+                <div class="stats-label">Ideas Shared</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats-card">
+                <div class="stats-number">8</div>
+                <div class="stats-label">Collaborations</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-card">
+            <h3 class="mb-4">Recent Activity</h3>
+            <div class="activity-card">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-lightbulb activity-icon"></i>
+                <div>
+                  <h5>Shared a new project idea</h5>
+                  <p class="text-muted">2 hours ago</p>
+                </div>
+              </div>
+            </div>
+            <div class="activity-card">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-comment activity-icon"></i>
+                <div>
+                  <h5>Commented on "AI Chatbot Project"</h5>
+                  <p class="text-muted">1 day ago</p>
+                </div>
+              </div>
+            </div>
+            <div class="activity-card">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-users activity-icon"></i>
+                <div>
+                  <h5>Joined a new collaboration</h5>
+                  <p class="text-muted">3 days ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-card mt-4">
+            <h3 class="mb-4">My Projects</h3>
+            <div class="activity-card">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-code activity-icon"></i>
+                <div>
+                  <h5>Smart Home Automation</h5>
+                  <p class="text-muted">Status: In Progress</p>
+                </div>
+              </div>
+            </div>
+            <div class="activity-card">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-mobile-alt activity-icon"></i>
+                <div>
+                  <h5>Fitness Tracker App</h5>
+                  <p class="text-muted">Status: Completed</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Include Footer -->
+  <div id="footer-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Load header and footer
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      });
+
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+
+    // Load user data when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (currentUser) {
+        // Update profile photo if exists
+        if (currentUser.profilePhoto) {
+          document.getElementById('profileImage').src = currentUser.profilePhoto;
+        }
+        
+        // Update profile information
+        document.querySelector('.profile-name').textContent = currentUser.fullName;
+        document.querySelector('.profile-role').textContent = 'Student';
+        
+        // Update account information
+        document.getElementById('username').textContent = currentUser.username;
+        document.getElementById('userEmail').textContent = currentUser.email;
+        
+        // Format and display member since date
+        const memberSince = new Date(currentUser.createdAt);
+        document.getElementById('memberSince').textContent = memberSince.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+        
+        // Update about me section
+        const aboutMe = document.getElementById('aboutMe');
+        if (currentUser.interests && currentUser.interests.length > 0) {
+          aboutMe.textContent = `Passionate about ${currentUser.interests.join(', ')}. Currently pursuing studies and working on exciting projects.`;
+        } else {
+          aboutMe.textContent = 'Passionate about technology and innovation. Currently pursuing studies and working on exciting projects.';
+        }
+        
+        // Update skills based on interests
+        const skillsContainer = document.getElementById('skillsContainer');
+        skillsContainer.innerHTML = ''; // Clear existing skills
+        if (currentUser.interests && currentUser.interests.length > 0) {
+          currentUser.interests.forEach(interest => {
+            const skillBadge = document.createElement('span');
+            skillBadge.className = 'skill-badge';
+            skillBadge.textContent = interest.charAt(0).toUpperCase() + interest.slice(1);
+            skillsContainer.appendChild(skillBadge);
+          });
+        } else {
+          const noSkills = document.createElement('p');
+          noSkills.textContent = 'No interests selected yet.';
+          skillsContainer.appendChild(noSkills);
+        }
+      } else {
+        // If no user is logged in, redirect to login page
+        window.location.href = 'login.html';
+      }
+    });
+
+    // Edit profile functionality
+    document.querySelector('.edit-btn').addEventListener('click', function() {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (currentUser) {
+        // Create edit form
+        const editForm = document.createElement('form');
+        editForm.innerHTML = `
+          <div class="mb-3">
+            <label for="editFullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="editFullName" value="${currentUser.fullName}" required>
+          </div>
+          <div class="mb-3">
+            <label for="editEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="editEmail" value="${currentUser.email}" required>
+          </div>
+          <div class="mb-3">
+            <label for="editInterests" class="form-label">Interests (Hold Ctrl/Cmd to select multiple)</label>
+            <select class="form-select" id="editInterests" multiple required>
+              <option value="engineering" ${currentUser.interests.includes('engineering') ? 'selected' : ''}>Engineering</option>
+              <option value="science" ${currentUser.interests.includes('science') ? 'selected' : ''}>Science</option>
+              <option value="art" ${currentUser.interests.includes('art') ? 'selected' : ''}>Art & Design</option>
+              <option value="technology" ${currentUser.interests.includes('technology') ? 'selected' : ''}>Technology</option>
+              <option value="business" ${currentUser.interests.includes('business') ? 'selected' : ''}>Business</option>
+              <option value="eco" ${currentUser.interests.includes('eco') ? 'selected' : ''}>Eco-Friendly</option>
+            </select>
+          </div>
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <button type="button" class="btn btn-secondary" onclick="cancelEdit()">Cancel</button>
+          </div>
+        `;
+
+        // Replace profile info with edit form
+        const profileInfo = document.querySelector('.profile-info');
+        const originalContent = profileInfo.innerHTML;
+        profileInfo.innerHTML = '';
+        profileInfo.appendChild(editForm);
+
+        // Handle form submission
+        editForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Update user data
+          currentUser.fullName = document.getElementById('editFullName').value;
+          currentUser.email = document.getElementById('editEmail').value;
+          currentUser.interests = Array.from(document.getElementById('editInterests').selectedOptions).map(option => option.value);
+
+          // Update localStorage
+          localStorage.setItem('currentUser', JSON.stringify(currentUser));
+          
+          // Update users array in localStorage
+          const users = JSON.parse(localStorage.getItem('users') || '[]');
+          const userIndex = users.findIndex(u => u.username === currentUser.username);
+          if (userIndex !== -1) {
+            users[userIndex] = currentUser;
+            localStorage.setItem('users', JSON.stringify(users));
+          }
+
+          // Refresh page to show updated information
+          location.reload();
+        });
+      }
+    });
+
+    function cancelEdit() {
+      location.reload();
+    }
+
+    // Add this function to handle profile photo upload
+    function handleProfilePhotoUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const imageData = e.target.result;
+          
+          // Update the profile image
+          document.getElementById('profileImage').src = imageData;
+          
+          // Save to localStorage
+          const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+          if (currentUser) {
+            currentUser.profilePhoto = imageData;
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            
+            // Update in users array
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const userIndex = users.findIndex(u => u.username === currentUser.username);
+            if (userIndex !== -1) {
+              users[userIndex] = currentUser;
+              localStorage.setItem('users', JSON.stringify(users));
+            }
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  </script>
+</body>
+</html> 

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-bg: #f8f9fa;
+      --dark-bg: #2c3e50;
+    }
+
+    .footer {
+      background-color: var(--dark-bg);
+      color: white;
+      padding: 60px 0 20px;
+    }
+
+    .footer h5 {
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .footer p {
+      color: rgba(255,255,255,0.8);
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary-color);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: var(--secondary-color);
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .footer {
+        text-align: center;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h5>About Us</h5>
+          <p>We are dedicated to providing innovative project ideas and resources for students and educators.</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/share/19DaTGPtsv/"><i class="fab fa-facebook"></i></a>
+            <a href="https://x.com/Akashsi28922238"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/mr_chauhan__03?igsh=Mmt2YXhoOWN2ZXgx"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/akash-singh-529561224?trk=contact-info"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="profile.html">Profile</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5>Contact Info</h5>
+          <p><i class="fas fa-map-marker-alt me-2"></i> 123 Innovation Street, singrauli ,pincode-486890</p>
+          <p><i class="fas fa-phone me-2"></i>8120935770</p>
+          <p><i class="fas fa-envelope me-2"></i> akashsingh014@gmail.com</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2024 Innovative Ideas. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

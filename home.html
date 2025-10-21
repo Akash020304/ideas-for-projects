@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Innovative Ideas | Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-bg: #f8f9fa;
+      --dark-bg: #2c3e50;
+    }
+
+    body {
+      background: var(--light-bg);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 80px 0;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.1)"/></svg>') center/cover;
+      opacity: 0.1;
+    }
+
+    .hero-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-top: 30px;
+      max-height: 400px;
+      object-fit: cover;
+    }
+
+    .category-card {
+      transition: all 0.3s ease;
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .category-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    .category-image {
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .category-card:hover .category-image {
+      transform: scale(1.05);
+    }
+
+    .explore-btn {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 30px;
+      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    }
+
+    .explore-btn:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    }
+
+    .section-title {
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: var(--secondary-color);
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 60px 0;
+      }
+
+      .hero-image {
+        max-height: 300px;
+      }
+
+      .category-card {
+        margin-bottom: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Include Header -->
+  <div id="header-placeholder"></div>
+
+  <!-- Hero Section -->
+  <section class="hero-section text-center">
+    <div class="container">
+      <h1 class="display-4 mb-4">Welcome to Innovative Ideas</h1>
+      <p class="lead mb-4">Explore innovative ideas and projects submitted by students and teachers!</p>
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+           alt="Students collaborating" 
+           class="hero-image">
+      <div class="mt-4">
+        <a href="#categories" class="explore-btn">
+          <i class="fas fa-arrow-down me-2"></i>
+          Explore Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center">Why Choose Us</h2>
+      <p class="text-center mb-5">Discover the benefits of our platform for students and educators</p>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="feature-card">
+            <i class="fas fa-lightbulb feature-icon"></i>
+            <h3>Innovative Ideas</h3>
+            <p>Access a vast collection of unique and creative project ideas across various disciplines.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <i class="fas fa-users feature-icon"></i>
+            <h3>Community Support</h3>
+            <p>Connect with fellow students and teachers for collaboration and guidance.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <i class="fas fa-graduation-cap feature-icon"></i>
+            <h3>Learning Resources</h3>
+            <p>Get access to comprehensive guides, tutorials, and implementation steps.</p>
+          </div>
+        </div>
+      </div>
+  </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section id="categories" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center">Explore Categories</h2>
+      <p class="text-center mb-5">Choose a category below to find amazing and innovative student project ideas:</p>
+
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+          <a href="engineering-branches.html" class="text-decoration-none">
+            <div class="card category-card">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                   class="category-image" 
+                   alt="Engineering Projects">
+            <div class="card-body">
+              <h5 class="card-title">Engineering Projects</h5>
+              <p class="card-text">Explore comprehensive project ideas across Computer, Electrical, Mechanical, Civil, Chemical, and Electronics Engineering.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+          <a href="science.html" class="text-decoration-none">
+            <div class="card category-card">
+              <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                   class="category-image" 
+                   alt="Science Projects">
+            <div class="card-body">
+              <h5 class="card-title">Science Projects</h5>
+              <p class="card-text">Discover cool experiments and scientific innovations for all levels.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+          <a href="design.html" class="text-decoration-none">
+            <div class="card category-card">
+              <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                   class="category-image" 
+                   alt="Art & Design">
+            <div class="card-body">
+              <h5 class="card-title">Art & Design</h5>
+              <p class="card-text">Unleash creativity with ideas in graphics, design, animation, and more.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+          <a href="technology.html" class="text-decoration-none">
+            <div class="card category-card">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                   class="category-image" 
+                   alt="Technology & Programming">
+            <div class="card-body">
+              <h5 class="card-title">Technology & Programming</h5>
+                <p class="card-text">Build innovative software, apps, websites, and AI/ML-based solutions.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+          <a href="eco.html" class="text-decoration-none">
+            <div class="card category-card">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                   class="category-image" 
+                   alt="Eco-Friendly Projects">
+            <div class="card-body">
+              <h5 class="card-title">Eco-Friendly Projects</h5>
+                <p class="card-text">Develop sustainable solutions for renewable energy, recycling, and environmental conservation.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+          <a href="business.html" class="text-decoration-none">
+            <div class="card category-card">
+              <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                   class="category-image" 
+                   alt="Business & Startup Ideas">
+            <div class="card-body">
+              <h5 class="card-title">Business & Startup Ideas</h5>
+                <p class="card-text">Explore entrepreneurial ventures and innovative business solutions for the modern market.</p>
+              </div>
+            </div>
+          </a>
+            </div>
+          </div>
+
+     
+    </div>
+  </section>
+
+  <!-- Include Footer -->
+  <div id="footer-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Load header and footer
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      });
+
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Innovative Project Ideas - Login</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #007BFF;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .login-container {
+      max-width: 400px;
+      background: white;
+      padding: 2rem;
+      margin: 2rem auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .login-container button:hover {
+      background-color: #218838;
+    }
+
+    .ideas-section {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .idea-card {
+      background: white;
+      margin: 1rem auto;
+      max-width: 600px;
+      padding: 1rem;
+      border-left: 5px solid #007BFF;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      border-radius: 6px;
+    }
+
+    .welcome {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #28a745;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #007BFF;
+      color: white;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Innovative Project Ideas</h1>
+  </header>
+
+  <div id="loginSection" class="login-container">
+    <h2>Login</h2>
+    <input type="text" id="loginEmail" placeholder="Email" required />
+    <input type="password" id="loginPassword" placeholder="Password" required />
+    <button onclick="handleLogin()">Login</button>
+  </div>
+
+  <div id="welcomeMessage" class="welcome" style="display: none;"></div>
+
+  <div class="ideas-section">
+    <h2>Featured Project Ideas</h2>
+
+    <div class="idea-card">
+      <h3>AI-Powered Health Assistant</h3>
+      <p>An app that monitors your health stats and offers real-time suggestions using machine learning.</p>
+    </div>
+
+    <div class="idea-card">
+      <h3>Smart Waste Management System</h3>
+      <p>A system using IoT to optimize garbage collection routes and reduce urban waste overflow.</p>
+    </div>
+
+    <div class="idea-card">
+      <h3>Blockchain Voting System</h3>
+      <p>Secure and transparent online voting system leveraging blockchain to prevent fraud.</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Project Ideas Portal
+  </footer>
+
+  <script>
+    // Check if user is already logged in
+    window.onload = function () {
+      const email = localStorage.getItem('email');
+      if (email) {
+        document.getElementById('loginSection').style.display = 'none';
+        document.getElementById('welcomeMessage').style.display = 'block';
+        document.getElementById('welcomeMessage').textContent = `Welcome back, ${email}!`;
+      }
+    };
+
+    function handleLogin() {
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value.trim();
+
+      if (email === '' || password === '') {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      // Save to LocalStorage (mock login)
+      localStorage.setItem('email', email);
+      localStorage.setItem('password', password); // Note: Never store passwords like this in real apps
+
+      alert('Login successful!');
+      location.reload(); // reload to show welcome message
+    }
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business & Startup Ideas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #9b59b6;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --dark-bg: #2c3e50;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+        }
+
+        .navbar {
+            background-color: var(--dark-bg) !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 80px 0;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.1)"/></svg>') center/cover;
+            opacity: 0.1;
+        }
+
+        .project-card {
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background: white;
+            border: none;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            background: rgba(155, 89, 182, 0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+        }
+
+        .difficulty-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .search-box input {
+            border-radius: 25px;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 20px;
+            padding: 8px 20px;
+        }
+
+        .category-filter {
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .category-btn {
+            border-radius: 20px;
+            padding: 8px 20px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .project-duration {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .project-details {
+            display: none;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-details.active {
+            display: block;
+        }
+
+        .resource-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .resource-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .implementation-steps {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .implementation-steps li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .implementation-steps li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 60px 0;
+            }
+            
+            .project-card {
+                margin-bottom: 15px;
+            }
+
+            .category-filter {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .category-btn {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Business & Startup Ideas</h1>
+            <p class="lead mb-0">Explore innovative business ventures and startup opportunities</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="search-box">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search projects...">
+                <button class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="category-filter">
+            <button class="btn category-btn active">All</button>
+            <button class="btn category-btn">E-commerce</button>
+            <button class="btn category-btn">Service-Based</button>
+            <button class="btn category-btn">Tech Startups</button>
+            <button class="btn category-btn">Social Impact</button>
+            <button class="btn category-btn">Local Business</button>
+        </div>
+
+        <div class="row">
+            <!-- Project 1 -->
+            <div class="col-md-4">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <span class="badge bg-success difficulty-badge">Beginner</span>
+                        <i class="fas fa-store project-icon"></i>
+                        <h5 class="card-title">Online Marketplace</h5>
+                        <p class="card-text">Create a niche e-commerce platform for unique products.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-primary view-details" data-project="1">View Details</button>
+                            <small class="project-duration">2-3 months</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-details" id="project-1">
+                    <h4>Project Overview</h4>
+                    <p>Develop an online marketplace platform that connects buyers and sellers of unique, handmade, or specialty products.</p>
+                    
+                    <h5>Implementation Steps</h5>
+                    <ul class="implementation-steps">
+                        <li>Define target market</li>
+                        <li>Design platform structure</li>
+                        <li>Develop payment system</li>
+                        <li>Create seller onboarding</li>
+                        <li>Launch marketing campaign</li>
+                    </ul>
+
+                    <h5>Required Components</h5>
+                    <ul>
+                        <li>E-commerce platform</li>
+                        <li>Payment gateway</li>
+                        <li>Seller management system</li>
+                        <li>Marketing strategy</li>
+                        <li>Customer support</li>
+                    </ul>
+
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="#" class="resource-link">E-commerce Guide</a></li>
+                        <li><a href="#" class="resource-link">Payment Systems</a></li>
+                        <li><a href="#" class="resource-link">Market Research</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="col-md-4">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <span class="badge bg-warning difficulty-badge">Intermediate</span>
+                        <i class="fas fa-mobile-alt project-icon"></i>
+                        <h5 class="card-title">Subscription Box Service</h5>
+                        <p class="card-text">Launch a curated subscription box business.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-primary view-details" data-project="2">View Details</button>
+                            <small class="project-duration">3-4 months</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-details" id="project-2">
+                    <h4>Project Overview</h4>
+                    <p>Create a subscription box service that delivers curated products to customers on a regular basis.</p>
+                    
+                    <h5>Implementation Steps</h5>
+                    <ul class="implementation-steps">
+                        <li>Choose niche market</li>
+                        <li>Source products</li>
+                        <li>Design packaging</li>
+                        <li>Set up subscription system</li>
+                        <li>Launch marketing campaign</li>
+                    </ul>
+
+                    <h5>Required Components</h5>
+                    <ul>
+                        <li>Product suppliers</li>
+                        <li>Packaging materials</li>
+                        <li>Subscription software</li>
+                        <li>Shipping logistics</li>
+                        <li>Marketing strategy</li>
+                    </ul>
+
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="#" class="resource-link">Subscription Business</a></li>
+                        <li><a href="#" class="resource-link">Product Sourcing</a></li>
+                        <li><a href="#" class="resource-link">Marketing Guide</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="col-md-4">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <span class="badge bg-danger difficulty-badge">Advanced</span>
+                        <i class="fas fa-robot project-icon"></i>
+                        <h5 class="card-title">AI-Powered Business Tool</h5>
+                        <p class="card-text">Develop an AI solution for business automation.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-primary view-details" data-project="3">View Details</button>
+                            <small class="project-duration">4-6 months</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-details" id="project-3">
+                    <h4>Project Overview</h4>
+                    <p>Create an AI-powered business tool that automates specific business processes or provides intelligent insights.</p>
+                    
+                    <h5>Implementation Steps</h5>
+                    <ul class="implementation-steps">
+                        <li>Identify business problem</li>
+                        <li>Develop AI solution</li>
+                        <li>Create user interface</li>
+                        <li>Test and optimize</li>
+                        <li>Launch and scale</li>
+                    </ul>
+
+                    <h5>Required Components</h5>
+                    <ul>
+                        <li>AI development team</li>
+                        <li>Cloud infrastructure</li>
+                        <li>User interface design</li>
+                        <li>Testing environment</li>
+                        <li>Marketing strategy</li>
+                    </ul>
+
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="#" class="resource-link">AI Development</a></li>
+                        <li><a href="#" class="resource-link">Business Automation</a></li>
+                        <li><a href="#" class="resource-link">Product Launch</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="col-md-4">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <span class="badge bg-success difficulty-badge">Beginner</span>
+                        <i class="fas fa-handshake project-icon"></i>
+                        <h5 class="card-title">Local Service Platform</h5>
+                        <p class="card-text">Build a platform connecting local service providers with customers.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-primary view-details" data-project="4">View Details</button>
+                            <small class="project-duration">2-3 months</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-details" id="project-4">
+                    <h4>Project Overview</h4>
+                    <p>Develop a platform that connects local service providers with customers in their community.</p>
+                    
+                    <h5>Implementation Steps</h5>
+                    <ul class="implementation-steps">
+                        <li>Identify target services</li>
+                        <li>Create platform design</li>
+                        <li>Develop booking system</li>
+                        <li>Onboard service providers</li>
+                        <li>Launch local marketing</li>
+                    </ul>
+
+                    <h5>Required Components</h5>
+                    <ul>
+                        <li>Web platform</li>
+                        <li>Booking system</li>
+                        <li>Provider management</li>
+                        <li>Payment processing</li>
+                        <li>Local marketing</li>
+                    </ul>
+
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="#" class="resource-link">Platform Development</a></li>
+                        <li><a href="#" class="resource-link">Local Marketing</a></li>
+                        <li><a href="#" class="resource-link">Service Management</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="col-md-4">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <span class="badge bg-warning difficulty-badge">Intermediate</span>
+                        <i class="fas fa-chart-line project-icon"></i>
+                        <h5 class="card-title">Social Impact Business</h5>
+                        <p class="card-text">Create a business that addresses social or environmental issues.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-primary view-details" data-project="5">View Details</button>
+                            <small class="project-duration">3-4 months</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-details" id="project-5">
+                    <h4>Project Overview</h4>
+                    <p>Develop a business model that generates profit while creating positive social or environmental impact.</p>
+                    
+                    <h5>Implementation Steps</h5>
+                    <ul class="implementation-steps">
+                        <li>Identify social issue</li>
+                        <li>Develop business model</li>
+                        <li>Create impact metrics</li>
+                        <li>Build partnerships</li>
+                        <li>Launch and measure</li>
+                    </ul>
+
+                    <h5>Required Components</h5>
+                    <ul>
+                        <li>Social mission</li>
+                        <li>Business plan</li>
+                        <li>Impact measurement</li>
+                        <li>Partnership network</li>
+                        <li>Funding strategy</li>
+                    </ul>
+
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="#" class="resource-link">Social Enterprise</a></li>
+                        <li><a href="#" class="resource-link">Impact Measurement</a></li>
+                        <li><a href="#" class="resource-link">Funding Guide</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="col-md-4">
+                <div class="card project-card">
+                    <div class="card-body">
+                        <span class="badge bg-danger difficulty-badge">Advanced</span>
+                        <i class="fas fa-brain project-icon"></i>
+                        <h5 class="card-title">Business Intelligence Tool</h5>
+                        <p class="card-text">Develop a data analytics platform for business insights.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-primary view-details" data-project="6">View Details</button>
+                            <small class="project-duration">5-6 months</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-details" id="project-6">
+                    <h4>Project Overview</h4>
+                    <p>Create a business intelligence platform that helps companies analyze data and make informed decisions.</p>
+                    
+                    <h5>Implementation Steps</h5>
+                    <ul class="implementation-steps">
+                        <li>Define analytics needs</li>
+                        <li>Develop data models</li>
+                        <li>Create visualization tools</li>
+                        <li>Build reporting system</li>
+                        <li>Test and deploy</li>
+                    </ul>
+
+                    <h5>Required Components</h5>
+                    <ul>
+                        <li>Data analytics tools</li>
+                        <li>Visualization software</li>
+                        <li>Database system</li>
+                        <li>Security measures</li>
+                        <li>User interface</li>
+                    </ul>
+
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="#" class="resource-link">Business Analytics</a></li>
+                        <li><a href="#" class="resource-link">Data Visualization</a></li>
+                        <li><a href="#" class="resource-link">Security Guide</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <nav aria-label="Page navigation" class="mt-4">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Load header and footer
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        // Add active class to category buttons
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Toggle project details
+        document.querySelectorAll('.view-details').forEach(button => {
+            button.addEventListener('click', function() {
+                const projectId = this.getAttribute('data-project');
+                const details = document.getElementById(`project-${projectId}`);
+                details.classList.toggle('active');
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-box input');
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            document.querySelectorAll('.project-card').forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                const description = card.querySelector('.card-text').textContent.toLowerCase();
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.parentElement.style.display = '';
+                } else {
+                    card.parentElement.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
